@@ -13,6 +13,7 @@ $(document).ready(function() {
     createTiles();
 
     $("#refresh").click(function () {
+        hour = minute = sec = undefined;
         $("#puzzlearea").html("");
         createTiles();
         resetTimer();
@@ -127,8 +128,13 @@ $(document).ready(function() {
     function checkSolvedState() {
         if (isSolved()) {
             resetTimer();
-            alert("You solved the puzzle in " + hour + " hours, " + minute + " minutes, " +
-                sec + " seconds");
+            if (hour == undefined && minute == undefined && sec == undefined) {
+                alert("Great! You solved the puzzle, but it would be more challenging if you shuffle" +
+                    " it!!");
+            } else {
+                alert("You solved the puzzle in " + hour + " hours, " + minute + " minutes, " +
+                    sec + " seconds");
+            }
         }
     }
 
